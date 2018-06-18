@@ -29,10 +29,9 @@ export class LessonTabsComponent implements OnInit {
 
   loadLessons(moduleId) {
     this.moduleId = moduleId;
-    if (moduleId !== undefined) {
-      this.service.findLessonsForModule(this.courseId, moduleId)
-        .then(lessons => this.lessons = lessons);
-    }
+    console.log(moduleId);
+    this.service.findLessonsForModule(moduleId)
+      .then(lessons => this.lessons = lessons);
   }
 
   ngOnInit() {

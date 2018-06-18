@@ -18,11 +18,10 @@ export class WidgetListComponent implements OnInit {
   widgets = [];
   setContext(params) {
     this.context = params;
-    this.loadWidgets(params.topicId);
+    this.loadWidgets(params.lessonId);
   }
   loadWidgets(lessonId) {
-    console.log(lessonId)
-    this.service.findWidgetsForTopic(lessonId)
+    this.service.findWidgetsForLesson(lessonId)
       .then(widgets => this.widgets = widgets);
   }
 

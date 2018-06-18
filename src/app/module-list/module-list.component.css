@@ -1,8 +1,8 @@
 .active.wbdv {
-  background-color: lightgray;
-  border-color: transparent;
+  background-color: red;
+  border-color: red;
 }
 
 .active.wbdv a {
-  color: black;
+  color: white;
 }
