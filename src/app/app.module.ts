@@ -16,6 +16,8 @@ import {LessonServiceClient} from './services/lesson.service.client';
 import {routing} from './app.routing';
 import { TopicListComponent } from './topic-list/topic-list.component';
 import {TopicServiceClient} from './services/topic.service.client';
+import {WidgetServiceClient} from './services/widget.service.client';
+import {WidgetListComponent} from './widget-list/widget-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import {TopicServiceClient} from './services/topic.service.client';
     CourseViewerComponent,
     ModuleListComponent,
     LessonTabsComponent,
-    TopicListComponent
+    TopicListComponent,
+    WidgetListComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import {TopicServiceClient} from './services/topic.service.client';
     CourseServiceClient,
     ModuleServiceClient,
     LessonServiceClient,
-    TopicServiceClient
+    TopicServiceClient,
+    WidgetServiceClient
   ],
   bootstrap: [AppComponent]
 })
