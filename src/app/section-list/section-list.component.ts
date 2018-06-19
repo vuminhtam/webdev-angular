@@ -59,7 +59,6 @@ export class SectionListComponent implements OnInit {
   }
 
   updateSectionList(courseId) {
-    console.log(this.sections);
     this.service
       .updateSectionList(courseId, this.sections)
       .then(reponse => reponse.json());
