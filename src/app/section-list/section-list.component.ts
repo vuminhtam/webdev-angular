@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {SectionServiceClient} from "../services/section.service.client";
+import {UserServiceClient} from '../services/user.service.client';
 
 @Component({
   selector: 'app-section-list',
@@ -10,11 +11,13 @@ import {SectionServiceClient} from "../services/section.service.client";
 export class SectionListComponent implements OnInit {
 
   constructor(private service: SectionServiceClient,
+              private userService: UserServiceClient,
               private router: Router,
               private route: ActivatedRoute) {
     this.route.params.subscribe(params => this.loadSections(params['courseId']))
   }
 
+  userRole = 'student';
   sectionName = '';
   seats = '';
   courseId = '';
@@ -46,6 +49,14 @@ export class SectionListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService
+      .profile()
+      .then(user => {
+        console.log(user.userRole);
+        if (user !== undefined) {
+          this.userRole = user.userRole;
+        }
+      });
   }
 
 }
