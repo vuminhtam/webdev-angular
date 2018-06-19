@@ -60,7 +60,14 @@ export class SectionListComponent implements OnInit {
 
   updateSectionList(courseId) {
     console.log(this.sections);
-    // this.service.updateSectionList(courseId, this.sections);
+    this.service
+      .updateSectionList(courseId, this.sections)
+      .then(reponse => reponse.json());
+  }
+
+  deleteSection(sectionId) {
+    const newList = this.sections.filter(section => (section._id !== sectionId));
+    this.sections = newList;
   }
 
 }

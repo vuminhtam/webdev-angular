@@ -36,7 +36,6 @@ export class SectionServiceClient {
   }
 
   updateSectionList(courseId, newList) {
-    console.log(newList)
     fetch(this.SECTION_URL.replace('COURSEID', courseId), {
       method: 'delete'
     });
