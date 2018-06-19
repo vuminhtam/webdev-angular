@@ -3,10 +3,17 @@
     White Board
   </h1>
 
-  <a routerLink="/login" *ngIf="!loggedin">Login</a>
-  <a routerLink="/register" *ngIf="!loggedin">Register</a>
-  <a (click)="logout()" *ngIf="loggedin">Logout</a>
 
-
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button  *ngIf="!loggedin" type="button" class="btn btn-warning">
+      <a routerLink="/login">Login</a>
+    </button>
+    <button *ngIf="!loggedin" type="button" class="btn btn-warning">
+      <a routerLink="/register">Register</a>
+    </button>
+    <button *ngIf="loggedin" type="button" class="btn btn-danger">
+      <a (click)="logout()">Logout</a>
+    </button>
+  </div>
   <app-course-grid *ngIf="loggedin"></app-course-grid>
 </div>
