@@ -20,6 +20,12 @@
              type="text"
              defaultValue={{section.name}}
              (keyup)="setSectionName(section._id, $event)">
+      <input *ngIf="userRole == 'admin'"
+             class="form-control"
+             type="text"
+             defaultValue={{section.maxSeats}}
+             (keyup)="setMaxSeat(section._id, $event)">
+
       {{section.name}} ({{section.seats}} seats available)
       <button
         *ngIf="userRole != 'admin'"

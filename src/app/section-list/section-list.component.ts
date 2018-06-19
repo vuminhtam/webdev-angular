@@ -79,4 +79,17 @@ export class SectionListComponent implements OnInit {
     }
   }
 
+  setMaxSeat(editingSectionId, event: any) {
+    if (event.target.value === '') {
+      alert('Section seat capacity must not be empty');
+    } else if (event.target.value === '0') {
+      alert('Section seat capacity must be at least 1');
+    } else {
+      this.sections.map(section => {
+        if (section._id === editingSectionId) {
+          section.maxSeats = event.target.value;
+        }
+      });
+    }
+  }
 }
