@@ -15,9 +15,10 @@ export class RegisterComponent implements OnInit {
   username;
   password;
   password2;
-  register(username, password, password2) {
+  userRole;
+  register(username, password, password2, userRole) {
     this.service
-      .createUser(username, password)
+      .createUser(username, password, userRole)
       .then(() =>
         this.router.navigate(['profile']));
   }

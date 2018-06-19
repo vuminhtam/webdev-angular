@@ -39,10 +39,11 @@ export class UserServiceClient {
       });
   }
 
-  createUser(username, password) {
+  createUser(username, password, userRole) {
     const user = {
       username: username,
-      password: password
+      password: password,
+      userRole: userRole
     };
     return fetch('http://localhost:4000/api/user', {
       body: JSON.stringify(user),

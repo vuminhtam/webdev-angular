@@ -16,11 +16,21 @@
           <input [(ngModel)]="password2"
                  placeholder="verify password"
                  class="form-control"/>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Role</label>
+            </div>
+            <select [(ngModel)]="userRole" class="custom-select" id="inputGroupSelect01">
+              <option value="student">Student</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+
         </div>
 
         <div class="register-btn">
           <button type="button" id="createBtn" class="btn btn-danger btn-block"
-                  (click)="register(username, password, password2)">
+                  (click)="register(username, password, password2, userRole)">
 
             Register
           </button>

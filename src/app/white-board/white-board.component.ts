@@ -30,8 +30,8 @@ export class WhiteBoardComponent implements OnInit {
     this.service
       .logout()
       .then(() => {
-          this.router.navigate(['login']);
           this.loggedin = false;
+          this.router.navigate(['login']);
         }
       );
   }
