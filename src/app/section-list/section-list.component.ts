@@ -52,11 +52,15 @@ export class SectionListComponent implements OnInit {
     this.userService
       .profile()
       .then(user => {
-        console.log(user.userRole);
         if (user !== undefined) {
           this.userRole = user.userRole;
         }
       });
+  }
+
+  updateSectionList(courseId) {
+    console.log(this.sections);
+    // this.service.updateSectionList(courseId, this.sections);
   }
 
 }

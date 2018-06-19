@@ -18,19 +18,25 @@
       <input *ngIf="userRole == 'admin'"
         class="form-control"
              type="text"
-             defaultValue={{section.name}}
-             readonly>
+             defaultValue={{section.name}}>
       {{section.name}} ({{section.seats}} seats available)
       <button
         *ngIf="userRole != 'admin'"
         (click)="enroll(section)"
               class="float-right btn btn-primary">Enroll</button>
+      <button
+        *ngIf="userRole == 'admin'"
+        (click)="delete(section)"
+        class="float-right btn btn-danger">
+        <i class="fa fa-times"></i>
+      </button>
+
     </li>
   </ul>
   <button
     *ngIf="userRole == 'admin'"
-    (click)="editCourseSections(section)"
-    class="float-right btn btn-primary">Update course sections</button>
+    (click)="updateSectionList(courseId)"
+    class="float-right btn btn-primary">Update changes</button>
 
 
 </div>
