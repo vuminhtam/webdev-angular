@@ -40,7 +40,6 @@ export class SectionServiceClient {
     fetch(this.SECTION_URL.replace('COURSEID', courseId), {
       method: 'delete'
     });
-    console.log(newList)
     return fetch(this.SECTION_URL.replace('COURSEID', courseId) + '/addAll', {
       method: 'post',
       body: JSON.stringify(newList),
@@ -48,6 +47,6 @@ export class SectionServiceClient {
       headers: {
         'content-type': 'application/json'
       }
-    });
+    }).then(response => alert('changes saved!'));
   }
 }

@@ -16,14 +16,16 @@
   <ul class="list-group">
     <li *ngFor="let section of sections" class="list-group-item">
       <input *ngIf="userRole == 'admin'"
-        class="form-control"
+             class="form-control"
              type="text"
-             defaultValue={{section.name}}>
+             defaultValue={{section.name}}
+             (keyup)="setSectionName(section._id, $event)">
       {{section.name}} ({{section.seats}} seats available)
       <button
         *ngIf="userRole != 'admin'"
         (click)="enroll(section)"
-              class="float-right btn btn-primary">Enroll</button>
+        class="float-right btn btn-primary">Enroll
+      </button>
       <button
         *ngIf="userRole == 'admin'"
         (click)="deleteSection(section._id)"
@@ -36,7 +38,8 @@
   <button
     *ngIf="userRole == 'admin'"
     (click)="updateSectionList(courseId)"
-    class="float-right btn btn-primary">Update changes</button>
+    class="float-right btn btn-primary">Update changes
+  </button>
 
 
 </div>

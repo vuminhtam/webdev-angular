@@ -14,7 +14,7 @@ export class SectionListComponent implements OnInit {
               private userService: UserServiceClient,
               private router: Router,
               private route: ActivatedRoute) {
-    this.route.params.subscribe(params => this.loadSections(params['courseId']))
+    this.route.params.subscribe(params => this.loadSections(params['courseId']));
   }
 
   userRole = 'student';
@@ -40,7 +40,6 @@ export class SectionListComponent implements OnInit {
   }
 
   enroll(section) {
-    // alert(section._id);
     this.service
       .enrollStudentInSection(section._id)
       .then(() => {
@@ -61,12 +60,23 @@ export class SectionListComponent implements OnInit {
   updateSectionList(courseId) {
     this.service
       .updateSectionList(courseId, this.sections)
-      .then(reponse => reponse.json());
+      .then(() => this.loadSections(this.courseId));
   }
 
   deleteSection(sectionId) {
     const newList = this.sections.filter(section => (section._id !== sectionId));
     this.sections = newList;
+  }
+  setSectionName(editingSectionId, event: any) {
+    if (event.target.value === '') {
+      alert('Section name must not be empty');
+    } else {
+      this.sections.map(section => {
+        if (section._id === editingSectionId) {
+          section.name = event.target.value;
+        }
+      });
+    }
   }
 
 }
