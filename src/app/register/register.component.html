@@ -1,21 +1,36 @@
 <div class="container-fluid">
-  <h1>Register</h1>
+  <div class = "container">
+    <div class="wrapper">
+      <div name="Login_Form" class="form-signin">
+        <h3 class="form-signin-heading">REGISTER FOR WHITEBOARD!</h3>
+        <hr class="colorgraph"><br>
 
-  <input [(ngModel)]="username"
-         placeholder="username"
-         class="form-control"/>
-  <input [(ngModel)]="password"
-         placeholder="password"
-         class="form-control"/>
-  <input [(ngModel)]="password2"
-         placeholder="verify password"
-         class="form-control"/>
-  <button (click)="register(username, password, password2)"
-          class="btn btn-primary btn-block">
-    Register
-  </button>
+        <div class="form-group">
 
-  <a routerLink="/login">Login</a>
-  <a routerLink="/home">Home</a>
+          <input [(ngModel)]="username"
+                 placeholder="username"
+                 class="form-control"/>
+          <input [(ngModel)]="password"
+                 placeholder="password"
+                 class="form-control"/>
+          <input [(ngModel)]="password2"
+                 placeholder="verify password"
+                 class="form-control"/>
+        </div>
+
+        <div class="register-btn">
+          <button type="button" id="createBtn" class="btn btn-danger btn-block"
+                  (click)="register(username, password, password2)">
+
+            Register
+          </button>
+        </div>
+        <a href="#" routerLink="/login" target="_blank">Already a user? Log in!</a>
+        <br/>
+        <a href="#" routerLink="/home">Home</a>
+
+      </div>
+    </div>
+  </div>
 
 </div>

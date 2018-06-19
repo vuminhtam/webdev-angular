@@ -1,30 +1,50 @@
 <div class="container-fluid">
-  <h1>
-    White Board
-  </h1>
-
-
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button  *ngIf="!loggedin" type="button" class="btn btn-warning">
-      <a routerLink="/login">Login</a>
-    </button>
-    <button *ngIf="!loggedin" type="button" class="btn btn-warning">
-      <a routerLink="/register">Register</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/home"><h1>White Board</h1></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="btn-group" role="group">
-      <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{user.username}}
-      </button>
-      <div  *ngIf="loggedin" class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-        <a class="dropdown-item bg-danger text-white" href="#">
-            <a (click)="logout()">Logout</a>
-        </a>
-        <a class="dropdown-item bg-warning text-white" href="/profile">
-          Profile
-        </a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul *ngIf="loggedin && user.userRole != 'admin'" class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Enroll a Course</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="/profile">My Courses</a>
+        </li>
+      </ul>
+
+      <div *ngIf="user.userRole == 'admin'" class="navbar-nav mr-auto mt-2 mt-lg-0">
+        Hello admin
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button  *ngIf="!loggedin" type="button" class="btn btn-warning" routerLink="/login">
+          Login
+        </button>
+        <button *ngIf="!loggedin" type="button" class="btn btn-warning" routerLink="/register">
+          Register
+        </button>
+
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{user.username}}
+          </button>
+          <div  *ngIf="loggedin" class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="dropdown-item bg-danger text-white" href="#">
+              <a (click)="logout()">Logout</a>
+            </a>
+            <a class="dropdown-item bg-warning text-white" routerLink="/profile">
+              Profile
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </nav>
+
+
+
   <app-course-grid *ngIf="loggedin"></app-course-grid>
 </div>
