@@ -3,8 +3,10 @@
     White Board
   </h1>
 
-  <a routerLink="/login">Login</a>
-  <a routerLink="/register">Register</a>
+  <a routerLink="/login" *ngIf="!loggedin">Login</a>
+  <a routerLink="/register" *ngIf="!loggedin">Register</a>
+  <a (click)="logout()" *ngIf="loggedin">Logout</a>
 
-  <app-course-grid></app-course-grid>
+
+  <app-course-grid *ngIf="loggedin"></app-course-grid>
 </div>

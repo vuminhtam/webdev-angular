@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   sections = [];
 
   update(user) {
+    alert('not implemented');
     console.log(user);
   }
 

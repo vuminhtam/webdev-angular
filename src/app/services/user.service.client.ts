@@ -32,7 +32,11 @@ export class UserServiceClient {
       {
         credentials: 'include', // include, same-origin, *omit
       })
-      .then(response => response.json());
+      .then(response => {
+        if (response.status !== 500) {
+          return response.json();
+        }
+      });
   }
 
   createUser(username, password) {
