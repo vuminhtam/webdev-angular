@@ -29,7 +29,6 @@ export class LessonTabsComponent implements OnInit {
 
   loadLessons(moduleId) {
     this.moduleId = moduleId;
-    console.log(moduleId);
     this.service.findLessonsForModule(moduleId)
       .then(lessons => this.lessons = lessons);
   }

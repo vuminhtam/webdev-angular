@@ -22,6 +22,7 @@
 
     <ul class="list-group">
       <li *ngFor="let enrollment of sections"
+          routerLink="/course/{{enrollment.section.courseId}}"
           class="list-group-item d-flex justify-content-around align-items-center">
         Course {{enrollment.section != null && enrollment.section.courseId}} - {{enrollment.section.name}}
         <span class="badge badge-primary badge-pill">{{enrollment.section.seats}} seats available</span>
@@ -30,12 +31,8 @@
           (click)="unenroll(enrollment.section)">
           Unenroll
         </button>
-
       </li>
     </ul>
   </div>
-
-  <a (click)="logout()">Logout</a>
-  <a routerLink="/home">Home</a>
 
 </div>

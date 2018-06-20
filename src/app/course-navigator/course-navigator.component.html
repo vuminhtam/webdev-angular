@@ -8,7 +8,7 @@
         <li *ngFor="let course of courses"
             (click)="selectCourse(course.id)"
             class="list-group-item">
-          {{course.title}}
+          {{course.title}}: {{course.name}}
         </li>
       </ul>
     </div>
