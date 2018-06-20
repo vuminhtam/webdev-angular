@@ -8,8 +8,15 @@
         <p class="card-text"> {{course.name}}</p>
         <a routerLink="/course/{{course.id}}"
            class="btn btn-primary">View lectures</a>
-        <a routerLink="/course/{{course.id}}/section"
-           class="btn btn-primary">View sections</a>
+
+        <button *ngIf="checkEnrolledInCourse(course.id)"
+                class="btn btn-warning">Enrolled</button>
+        <div *ngIf="!checkEnrolledInCourse(course.id)">
+          <a routerLink="/course/{{course.id}}/section"
+             class="btn btn-primary"
+          >Enroll</a>
+        </div>
+
       </div>
     </div>
   </div>
