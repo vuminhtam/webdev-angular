@@ -18,16 +18,19 @@ export class SectionServiceClient {
   }
 
   enrollStudentInSection(sectionId) {
-    const section = this.findSectionById(sectionId);
-    if (section != null && section.seats > 0) {
-      const url = 'http://localhost:4000/api/section/' + sectionId + '/enrollment';
-      return fetch(url, {
-        method: 'post',
-        credentials: 'include'
-      });
-    } else {
-      alert('No more seats available');
-    }
+    let section;
+    this.findSectionById(sectionId).then((result) => {
+      section = result;
+      if (section != null && section.seats > 0) {
+        const url = 'http://localhost:4000/api/section/' + sectionId + '/enrollment';
+        return fetch(url, {
+          method: 'post',
+          credentials: 'include'
+        });
+      } else {
+        alert('No more seats available');
+      }
+    });
   }
 
   findSectionsForCourse(courseId) {
