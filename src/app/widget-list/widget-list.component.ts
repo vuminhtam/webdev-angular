@@ -29,4 +29,9 @@ export class WidgetListComponent implements OnInit {
   ngOnInit() {
   }
 
+  getList(text) {
+    const convert = "item1\nitem2";
+    return convert.split("\n");
+  }
+
 }
