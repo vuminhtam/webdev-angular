@@ -22,7 +22,7 @@
 
   <ul class="list-group">
     <li *ngFor="let enrollment of sections" class="list-group-item">
-      Course {{enrollment.section.courseId}} - {{enrollment.section.name}}
+      Course {{enrollment.section != null && enrollment.section.courseId}} - {{enrollment.section.name}}
       ({{enrollment.section.seats}} available)
     </li>
   </ul>

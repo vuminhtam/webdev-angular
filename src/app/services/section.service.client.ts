@@ -19,14 +19,14 @@ export class SectionServiceClient {
 
   enrollStudentInSection(sectionId) {
     let section;
-    this.findSectionById(sectionId).then((result) => {
+    return this.findSectionById(sectionId).then((result) => {
       section = result;
       if (section != null && section.seats > 0) {
         const url = 'http://localhost:4000/api/section/' + sectionId + '/enrollment';
         return fetch(url, {
           method: 'post',
           credentials: 'include'
-        });
+        }).then(response => response.json());
       } else {
         alert('No more seats available');
       }
