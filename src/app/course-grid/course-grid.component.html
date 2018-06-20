@@ -14,7 +14,7 @@
         <div *ngIf="!checkEnrolledInCourse(course.id)">
           <a routerLink="/course/{{course.id}}/section"
              class="btn btn-primary"
-          >Enroll</a>
+          >{{getEnrollEditButton()}}</a>
         </div>
 
       </div>

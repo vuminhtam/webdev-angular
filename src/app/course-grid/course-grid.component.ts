@@ -30,12 +30,18 @@ export class CourseGridComponent implements OnInit {
       .then(courses => this.courses = courses);
   }
   checkEnrolledInCourse(courseId) {
-    console.log(this.sections);
     for (let i = 0; i < this.sections.length; i++) {
       if (this.sections[i].section.courseId === courseId) {
         return true;
       }
     }
     return false;
+  }
+  getEnrollEditButton() {
+    if (this.user.userRole === 'admin') {
+      return 'Edit sections';
+    } else {
+      return 'Enroll';
+    }
   }
 }

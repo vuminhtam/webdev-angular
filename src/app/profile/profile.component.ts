@@ -33,11 +33,15 @@ export class ProfileComponent implements OnInit {
         this.router.navigate(['login']));
   }
 
+  updateInfo(user) {
+    this.user = user;
+    this.username = user.username;
+  }
   ngOnInit() {
     this.service
       .profile()
       .then(user =>
-        this.username = user.username);
+        this.updateInfo(user));
 
     this.sectionService
       .findSectionsForStudent()

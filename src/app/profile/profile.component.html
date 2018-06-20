@@ -17,15 +17,16 @@
           class="btn btn-primary btn-block">
     Update
   </button>
+  <div *ngIf="user.userRole != 'admin'">
+    <h2>My Courses ({{sections.length}})</h2>
 
-  <h2>My Courses ({{sections.length}})</h2>
-
-  <ul class="list-group">
-    <li *ngFor="let enrollment of sections" class="list-group-item">
-      Course {{enrollment.section != null && enrollment.section.courseId}} - {{enrollment.section.name}}
-      ({{enrollment.section.seats}} available)
-    </li>
-  </ul>
+    <ul class="list-group">
+      <li *ngFor="let enrollment of sections" class="list-group-item">
+        Course {{enrollment.section != null && enrollment.section.courseId}} - {{enrollment.section.name}}
+        ({{enrollment.section.seats}} available)
+      </li>
+    </ul>
+  </div>
 
   <a (click)="logout()">Logout</a>
   <a routerLink="/home">Home</a>
