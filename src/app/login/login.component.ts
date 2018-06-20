@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
         if (response.status === 500) {
           alert('Invalid credentials');
         } else {
-          this.router.navigate(['profile']);
+          alert('refresh for header to refresh');
+          this.router.navigate(['home']);
         }
       });
   }
