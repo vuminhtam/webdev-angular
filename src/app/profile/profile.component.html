@@ -18,11 +18,12 @@
     Update
   </button>
 
-  <h2>Sections ({{sections.length}})</h2>
+  <h2>My Courses ({{sections.length}})</h2>
 
   <ul class="list-group">
     <li *ngFor="let enrollment of sections" class="list-group-item">
-      {{enrollment.section.name}}
+      Course {{enrollment.section.courseId}}
+       - {{enrollment.section.name}}
       ({{enrollment.section.seats}})
     </li>
   </ul>

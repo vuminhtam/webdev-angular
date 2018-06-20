@@ -2,6 +2,13 @@ export class SectionServiceClient {
 
   SECTION_URL = 'http://localhost:4000/api/course/COURSEID/section';
 
+  findSectionById(sectionId) {
+    const url = 'http://localhost:4000/api/section/' + sectionId;
+    return fetch(url, {
+      credentials: 'include'
+    })
+      .then(response => response.json());
+  }
   findSectionsForStudent() {
     const url = 'http://localhost:4000/api/student/section';
     return fetch(url, {
@@ -11,11 +18,16 @@ export class SectionServiceClient {
   }
 
   enrollStudentInSection(sectionId) {
-    const url = 'http://localhost:4000/api/section/' + sectionId + '/enrollment';
-    return fetch(url, {
-      method: 'post',
-      credentials: 'include'
-    });
+    const section = this.findSectionById(sectionId);
+    if (section != null && section.seats > 0) {
+      const url = 'http://localhost:4000/api/section/' + sectionId + '/enrollment';
+      return fetch(url, {
+        method: 'post',
+        credentials: 'include'
+      });
+    } else {
+      alert('No more seats available');
+    }
   }
 
   findSectionsForCourse(courseId) {

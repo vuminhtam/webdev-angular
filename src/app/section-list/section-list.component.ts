@@ -66,6 +66,9 @@ export class SectionListComponent implements OnInit {
   deleteSection(sectionId) {
     const newList = this.sections.filter(section => (section._id !== sectionId));
     this.sections = newList;
+    this.service
+      .updateSectionList(this.courseId, this.sections)
+      .then(() => this.loadSections(this.courseId));
   }
   setSectionName(editingSectionId, event: any) {
     if (event.target.value === '') {
