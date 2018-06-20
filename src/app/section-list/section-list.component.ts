@@ -43,7 +43,7 @@ export class SectionListComponent implements OnInit {
     this.service
       .enrollStudentInSection(section._id)
       .then(() => {
-        this.router.navigate(['profile']);
+        this.router.navigate(['home']);
       });
   }
 
