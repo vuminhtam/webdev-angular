@@ -21,9 +21,16 @@
     <h2>My Courses ({{sections.length}})</h2>
 
     <ul class="list-group">
-      <li *ngFor="let enrollment of sections" class="list-group-item">
+      <li *ngFor="let enrollment of sections"
+          class="list-group-item d-flex justify-content-around align-items-center">
         Course {{enrollment.section != null && enrollment.section.courseId}} - {{enrollment.section.name}}
-        ({{enrollment.section.seats}} available)
+        <span class="badge badge-primary badge-pill">{{enrollment.section.seats}} seats available</span>
+        <button
+          class="btn btn-outline-secondary"
+          (click)="unenroll(enrollment.section)">
+          Unenroll
+        </button>
+
       </li>
     </ul>
   </div>

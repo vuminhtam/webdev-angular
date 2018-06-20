@@ -26,6 +26,18 @@ export class ProfileComponent implements OnInit {
     console.log(user);
   }
 
+  unenroll(section) {
+    this.sectionService
+      .unenrollStudentFromSection(section._id)
+      .then(() => this.loadSections());
+  }
+
+  loadSections() {
+    this.sectionService
+      .findSectionsForStudent()
+      .then(sections => this.sections = sections);
+  }
+
   logout() {
     this.service
       .logout()
@@ -37,6 +49,7 @@ export class ProfileComponent implements OnInit {
     this.user = user;
     this.username = user.username;
   }
+
   ngOnInit() {
     this.service
       .profile()

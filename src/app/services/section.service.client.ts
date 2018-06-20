@@ -33,6 +33,24 @@ export class SectionServiceClient {
     });
   }
 
+
+  unenrollStudentFromSection(sectionId) {
+    let section;
+    return this.findSectionById(sectionId).then((result) => {
+      section = result;
+      // if (section != null && section.seats > 0) {
+        const url = 'http://localhost:4000/api/section/' + sectionId + '/unenroll';
+        return fetch(url, {
+          method: 'post',
+          credentials: 'include'
+        }).then(response => response.json());
+      // } else {
+      //   alert('No more seats available');
+      // }
+    });
+  }
+
+
   findSectionsForCourse(courseId) {
     return fetch(this.SECTION_URL.replace('COURSEID', courseId))
       .then(response => response.json());
